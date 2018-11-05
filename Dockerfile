@@ -2,7 +2,7 @@ FROM centos:7
 LABEL maintainer="Jason Goldfine-Middleton"
 ENV container=docker
 
-ARG DEBIAN_FRONTEND=noninteractive 
+ARG DEBIAN_FRONTEND=noninteractive
 ARG PIP_PACKAGES="ansible"
 
 # Install systemd -- See https://hub.docker.com/_/centos/
