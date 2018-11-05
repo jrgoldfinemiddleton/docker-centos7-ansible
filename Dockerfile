@@ -1,8 +1,9 @@
 FROM centos:7
-LABEL maintainer="Jeff Geerling"
+LABEL maintainer="Jason Goldfine-Middleton"
 ENV container=docker
 
-ENV pip_packages "ansible"
+ARG DEBIAN_FRONTEND=noninteractive 
+ARG PIP_PACKAGES="ansible"
 
 # Install systemd -- See https://hub.docker.com/_/centos/
 RUN yum -y update; yum clean all; \
@@ -26,7 +27,7 @@ RUN yum makecache fast \
  && yum clean all
 
 # Install Ansible via Pip.
-RUN pip install $pip_packages
+RUN pip install $PIP_PACKAGES
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
